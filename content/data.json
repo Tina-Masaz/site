@@ -1,15 +1,64 @@
 {
   "hours": {
-    "pl": "Pon–Sob 09:00–19:00 (na umówioną wizytę)",
-    "ua": "Пн–Сб 09:00–19:00 (за попереднім записом)"
+    "pl": "Pon–Sob 09:00–20:00 (na umówioną wizytę)",
+    "ua": "Пн–Сб 09:00–20:00 (за попереднім записом)"
   },
   "services": [
-    { "pl": "Masaż relaksacyjny", "ua": "Розслаблюючий масаж", "duration": "60 хв / min", "price": "153 zł", "descPl": "Delikatny masaż całego ciała redukujący napięcie i stres.", "descUa": "Ніжний масаж усього тіла для зняття напруги та стресу." },
-    { "pl": "Masaż klasyczny", "ua": "Класичний масаж", "duration": "60 хв / min", "price": "153 zł", "descPl": "Klasyczna technika poprawiająca krążenie i elastyczność mięśni.", "descUa": "Класична техніка для покращення кровообігу та еластичності м’язів." },
-    { "pl": "Masaż personalny", "ua": "Персональний масаж", "duration": "90 хв / min", "price": "204 zł", "descPl": "Wydłużona, indywidualnie dobrana sesja dla głębokiego relaksu.", "descUa": "Подовжена індивідуально підібрана сесія для глибокого розслаблення." },
-    { "pl": "Japoński masaż twarzy Kobido", "ua": "Японський масаж обличчя Kobido", "duration": "60 хв / min", "price": "153 zł", "descPl": "Rytuał ujędrniający i odmładzający skórę twarzy.", "descUa": "Ритуал для зміцнення та омолодження шкіри обличчя." },
-    { "pl": "Masaż tajski stóp", "ua": "Тайський масаж стоп", "duration": "60 хв / min", "price": "127,50 zł", "descPl": "Relaksujący masaż stóp i łydek techniką tajską.", "descUa": "Розслаблюючий масаж стоп і литок за тайською технікою." },
-    { "pl": "Masaż transbukalny", "ua": "Трансбукальний масаж", "duration": "40 хв / min", "price": "127,50 zł", "descPl": "Masaż wewnątrzustny modelujący owal twarzy.", "descUa": "Масаж зсередини ротової порожнини для моделювання овалу обличчя." },
-    { "pl": "Masaż ujędrniający twarzy", "ua": "Масаж, що зміцнює обличчя", "duration": "60 хв / min", "price": "od 153 zł", "descPl": "Zabieg liftingujący i napinający skórę twarzy.", "descUa": "Ліфтинг-процедура для підтягнення шкіри обличчя." }
+    {
+      "pl": "Masaż relaksacyjny",
+      "ua": "Розслаблюючий масаж",
+      "duration": "60 хв / min",
+      "price": "153 zł",
+      "descPl": "Delikatny masaż całego ciała redukujący napięcie i stres.",
+      "descUa": "Ніжний масаж усього тіла для зняття напруги та стресу."
+    },
+    {
+      "pl": "Masaż klasyczny",
+      "ua": "Класичний масаж",
+      "duration": "60 хв / min",
+      "price": "153 zł",
+      "descPl": "Klasyczna technika poprawiająca krążenie i elastyczność mięśni.",
+      "descUa": "Класична техніка для покращення кровообігу та еластичності м’язів."
+    },
+    {
+      "pl": "Masaż personalny",
+      "ua": "Персональний масаж",
+      "duration": "90 хв / min",
+      "price": "204 zł",
+      "descPl": "Wydłużona, indywidualnie dobrana sesja dla głębokiego relaksu.",
+      "descUa": "Подовжена індивідуально підібрана сесія для глибокого розслаблення."
+    },
+    {
+      "pl": "Japoński masaż twarzy Kobido",
+      "ua": "Японський масаж обличчя Kobido",
+      "duration": "60 хв / min",
+      "price": "153 zł",
+      "descPl": "Rytuał ujędrniający i odmładzający skórę twarzy.",
+      "descUa": "Ритуал для зміцнення та омолодження шкіри обличчя."
+    },
+    {
+      "pl": "Masaż tajski stóp",
+      "ua": "Тайський масаж стоп",
+      "duration": "60 хв / min",
+      "price": "127,50 zł",
+      "descPl": "Relaksujący masaż stóp i łydek techniką tajską.",
+      "descUa": "Розслаблюючий масаж стоп і литок за тайською технікою."
+    },
+    {
+      "pl": "Masaż transbukalny",
+      "ua": "Трансбукальний масаж",
+      "duration": "40 хв / min",
+      "price": "127,50 zł",
+      "descPl": "Masaż wewnątrzustny modelujący owal twarzy.",
+      "descUa": "Масаж зсередини ротової порожнини для моделювання овалу обличчя."
+    },
+    {
+      "pl": "Masaż ujędrniający twarzy",
+      "ua": "Масаж, що зміцнює обличчя",
+      "duration": "60 хв / min",
+      "price": "od 153 zł",
+      "descPl": "Zabieg liftingujący i napinający skórę twarzy.",
+      "descUa": "Ліфтинг-процедура для підтягнення шкіри обличчя."
+    }
   ]
 }
