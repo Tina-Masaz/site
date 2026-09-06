@@ -1,0 +1,32 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "site"
+    label: "Сайт Tina"
+    files:
+      - file: "content/data.json"
+        label: "Розклад та послуги"
+        name: "data"
+        fields:
+          - label: "Робочі години"
+            name: "hours"
+            widget: "object"
+            fields:
+              - { label: "Години (текст на сайті, польською)", name: "pl", widget: "string", hint: "Напр.: Pon–Sob 09:00–19:00 (na umówioną wizytę)" }
+              - { label: "Години (текст на сайті, українською)", name: "ua", widget: "string", hint: "Напр.: Пн–Сб 09:00–19:00 (за попереднім записом)" }
+          - label: "Послуги"
+            name: "services"
+            widget: "list"
+            summary: "{{fields.pl}} — {{fields.price}}"
+            fields:
+              - { label: "Назва (польською)", name: "pl", widget: "string" }
+              - { label: "Назва (українською)", name: "ua", widget: "string" }
+              - { label: "Тривалість", name: "duration", widget: "string", hint: "Напр.: 60 хв / min" }
+              - { label: "Ціна", name: "price", widget: "string", hint: "Напр.: 153 zł" }
+              - { label: "Опис (польською)", name: "descPl", widget: "text" }
+              - { label: "Опис (українською)", name: "descUa", widget: "text" }

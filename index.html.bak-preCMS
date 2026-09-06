@@ -265,19 +265,8 @@
   <a href="https://booksy.com/pl-pl/265397_gabinet-masazu-tina_masaz_9954_niepolomice" target="_blank" rel="noopener">Booksy</a>
 </footer>
 
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <script>
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on("init", user => {
-      if (!user) {
-        window.netlifyIdentity.on("login", () => { document.location.href = "/admin/"; });
-      }
-    });
-  }
-</script>
-<script>
-const DEFAULT_HOURS = { pl:"Pon–Sob 09:00–19:00 (na umówioną wizytę)", ua:"Пн–Сб 09:00–19:00 (за попереднім записом)" };
-const DEFAULT_SERVICES = [
+const services = [
   { pl:"Masaż relaksacyjny", ua:"Розслаблюючий масаж", duration:"60 хв / min", price:"153 zł", descPl:"Delikatny masaż całego ciała redukujący napięcie i stres.", descUa:"Ніжний масаж усього тіла для зняття напруги та стресу." },
   { pl:"Masaż klasyczny", ua:"Класичний масаж", duration:"60 хв / min", price:"153 zł", descPl:"Klasyczna technika poprawiająca krążenie i elastyczność mięśni.", descUa:"Класична техніка для покращення кровообігу та еластичності м’язів." },
   { pl:"Masaż personalny", ua:"Персональний масаж", duration:"90 хв / min", price:"204 zł", descPl:"Wydłużona, indywidualnie dobrana sesja dla głębokiego relaksu.", descUa:"Подовжена індивідуально підібрана сесія для глибокого розслаблення." },
@@ -286,9 +275,6 @@ const DEFAULT_SERVICES = [
   { pl:"Masaż transbukalny", ua:"Трансбукальний масаж", duration:"40 хв / min", price:"127,50 zł", descPl:"Masaż wewnątrzustny modelujący owal twarzy.", descUa:"Масаж зсередини ротової порожнини для моделювання овалу обличчя." },
   { pl:"Masaż ujędrniający twarzy", ua:"Масаж, що зміцнює обличчя", duration:"60 хв / min", price:"od 153 zł", descPl:"Zabieg liftingujący i napinający skórę twarzy.", descUa:"Ліфтинг-процедура для підтягнення шкіри обличчя." },
 ];
-
-let hours = DEFAULT_HOURS;
-let services = DEFAULT_SERVICES;
 
 const i18n = {
   pl:{
@@ -301,7 +287,7 @@ const i18n = {
     about_eyebrow:"O gabinecie",
     about_title:"Prowadzi Alona Artemenko",
     about_text:"Kameralny gabinet masażu w centrum Niepołomic. Każda wizyta to indywidualnie dobrany zabieg — od klasycznego masażu relaksacyjnego, przez japoński rytuał Kobido, po pielęgnację i modelowanie twarzy. Wizyty wyłącznie po wcześniejszym umówieniu.",
-    badge_hours:"🕘 {{HOURS}}",
+    badge_hours:"🕘 Pon–Sob 09:00–19:00 (na umówioną wizytę)",
     badge_address:"📍 ul. Młyńska 3a, 32-005 Niepołomice",
     services_eyebrow:"Cennik",
     services_title:"Usługi",
@@ -310,7 +296,7 @@ const i18n = {
     gallery_title:"Galeria",
     contact_title:"Umów się na chwilę dla siebie",
     contact_lead:"Rezerwacja online 24/7 przez Booksy — wybierz usługę, dogodny termin i gotowe.",
-    contact_info:"📍 ul. Młyńska 3a, 32-005 Niepołomice &nbsp;·&nbsp; 🕘 {{HOURS}}",
+    contact_info:"📍 ul. Młyńska 3a, 32-005 Niepołomice &nbsp;·&nbsp; 🕘 Pon–Sob 09:00–19:00, tylko na umówioną wizytę",
     footer_text:"Gabinet Masażu Tina · Niepołomice · Rezerwacja przez",
   },
   ua:{
@@ -323,7 +309,7 @@ const i18n = {
     about_eyebrow:"Про кабінет",
     about_title:"Веде Альона Артеменко",
     about_text:"Камерний кабінет масажу в центрі Нєполоміце. Кожен візит — індивідуально підібрана процедура: від класичного розслаблюючого масажу, через японський ритуал Kobido, до догляду та моделювання обличчя. Візити лише за попереднім записом.",
-    badge_hours:"🕘 {{HOURS}}",
+    badge_hours:"🕘 Пн–Сб 09:00–19:00 (за попереднім записом)",
     badge_address:"📍 вул. Млинська 3a, 32-005 Нєполоміце",
     services_eyebrow:"Прайс",
     services_title:"Послуги",
@@ -332,7 +318,7 @@ const i18n = {
     gallery_title:"Галерея",
     contact_title:"Запишіться на хвилину для себе",
     contact_lead:"Онлайн-запис 24/7 через Booksy — оберіть послугу, зручний час і готово.",
-    contact_info:"📍 вул. Млинська 3a, 32-005 Нєполоміце &nbsp;·&nbsp; 🕘 {{HOURS}}",
+    contact_info:"📍 вул. Млинська 3a, 32-005 Нєполоміце &nbsp;·&nbsp; 🕘 Пн–Сб 09:00–19:00, лише за попереднім записом",
     footer_text:"Кабінет масажу Tina · Нєполоміце · Запис через",
   }
 };
@@ -355,12 +341,7 @@ function setLang(lang){
   document.documentElement.lang = lang === 'ua' ? 'uk' : 'pl';
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
-    let val = i18n[lang][key];
-    if (!val) return;
-    if (key === 'badge_hours' || key === 'contact_info') {
-      val = val.replace('{{HOURS}}', (hours && hours[lang]) || DEFAULT_HOURS[lang]);
-    }
-    el.innerHTML = val;
+    if (i18n[lang][key]) el.innerHTML = i18n[lang][key];
   });
   document.querySelectorAll('.lang-toggle button').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.lang === lang);
@@ -372,18 +353,7 @@ document.querySelectorAll('.lang-toggle button').forEach(btn => {
   btn.addEventListener('click', () => setLang(btn.dataset.lang));
 });
 
-async function loadContent(){
-  try {
-    const res = await fetch('content/data.json', { cache: 'no-store' });
-    if (res.ok) {
-      const data = await res.json();
-      if (data && Array.isArray(data.services) && data.services.length) services = data.services;
-      if (data && data.hours) hours = { pl: data.hours.pl || DEFAULT_HOURS.pl, ua: data.hours.ua || DEFAULT_HOURS.ua };
-    }
-  } catch (e) { /* keep built-in defaults, e.g. offline or opened as a local file */ }
-}
-
-loadContent().finally(() => setLang('pl'));
+setLang('pl');
 </script>
 
 </body>
