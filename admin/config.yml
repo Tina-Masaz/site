@@ -19,6 +19,13 @@ collections:
             fields:
               - { label: "Години (текст на сайті, польською)", name: "pl", widget: "string", hint: "Напр.: Pon–Sob 09:00–19:00 (na umówioną wizytę)" }
               - { label: "Години (текст на сайті, українською)", name: "ua", widget: "string", hint: "Напр.: Пн–Сб 09:00–19:00 (за попереднім записом)" }
+          - label: "Рейтинг Booksy"
+            name: "rating"
+            widget: "object"
+            hint: "Оновлюється автоматично раз на день з Booksy. Можна поправити вручну — автооновлення підхопить свіже значення при наступному запуску."
+            fields:
+              - { label: "Оцінка", name: "value", widget: "string", hint: "Напр.: 5.0" }
+              - { label: "Кількість відгуків", name: "count", widget: "number", value_type: "int" }
           - label: "Послуги"
             name: "services"
             widget: "list"
