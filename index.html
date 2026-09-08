@@ -5,7 +5,9 @@
 <meta name="vewport" content="width=device-width, initial-scale=1.0">
 <title>Gabinet Masażu Tina — Niepołomice</title>
 <meta name="description" content="Gabinet Masażu Tina w Niepołomicach — masaż relaksacyjny, klasyczny, Kobido i pielęgnacja twarzy. Rezerwacja online przez Booksy.">
-<link rel="icon" href="data:,">
+<link rel="icon" type="image/svg+xml" href="images/logo/favicon.svg">
+<link rel="alternate icon" type="image/png" sizes="32x32" href="images/logo/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="images/logo/favicon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -56,9 +58,13 @@
     max-width:1080px; margin:0 auto;
   }
   .logo{
+    display:flex; align-items:center; gap:10px;
     font-family:'Cormorant Garamond', serif;
     font-size:1.5rem; font-weight:700; color:var(--sage-dark);
+    text-decoration:none; transition:opacity .15s ease;
   }
+  .logo:hover{ opacity:0.8; }
+  .logo-icon{ height:44px; width:auto; display:block; }
   .lang-toggle{
     display:flex; gap:6px; background:var(--cream-2); border-radius:999px; padding:4px;
   }
@@ -174,7 +180,7 @@
 
 <header>
   <nav>
-    <div class="logo">Tina · Gabinet Masażu</div>
+    <a class="logo" href="https://booksy.com/pl-pl/265397_gabinet-masazu-tina_masaz_9954_niepolomice" target="_blank" rel="noopener" aria-label="Zarezerwuj wizytę przez Booksy"><img class="logo-icon" src="images/logo/cat-icon-sage.svg" alt=""><span>Tina · Gabinet Masażu</span></a>
     <div class="lang-toggle" role="group" aria-label="Language">
       <button type="button" data-lang="pl" class="active">PL</button>
       <button type="button" data-lang="ua">UA</button>
@@ -277,6 +283,7 @@
 </script>
 <script>
 const DEFAULT_HOURS = { pl:"Pon–Sob 09:00–19:00 (na umówioną wizytę)", ua:"Пн–Сб 09:00–19:00 (за попереднім записом)" };
+const DEFAULT_RATING = { value:"5.0", count:11 };
 const DEFAULT_SERVICES = [
   { pl:"Masaż relaksacyjny", ua:"Розслаблюючий масаж", duration:"60 хв / min", price:"153 zł", descPl:"Delikatny masaż całego ciała redukujący napięcie i stres.", descUa:"Ніжний масаж усього тіла для зняття напруги та стресу." },
   { pl:"Masaż klasyczny", ua:"Класичний масаж", duration:"60 хв / min", price:"153 zł", descPl:"Klasyczna technika poprawiająca krążenie i elastyczność mięśni.", descUa:"Класична техніка для покращення кровообігу та еластичності м’язів." },
@@ -288,6 +295,7 @@ const DEFAULT_SERVICES = [
 ];
 
 let hours = DEFAULT_HOURS;
+let rating = DEFAULT_RATING;
 let services = DEFAULT_SERVICES;
 
 const i18n = {
@@ -295,7 +303,7 @@ const i18n = {
     hero_eyebrow:"Niepołomice · Młyńska 3a",
     hero_title:"Chwila spokoju dla Twojego ciała i umysłu",
     hero_lead:"Gabinet Masażu Tina — masaż relaksacyjny, klasyczny, japoński Kobido i pielęgnacja twarzy w kameralnej atmosferze, tylko na umówione wizyty.",
-    hero_rating:"5.0 na podstawie 11 opinii (Booksy)",
+    hero_rating:"{{RATING_VALUE}} na podstawie {{RATING_COUNT}} opinii (Booksy)",
     btn_book:"Zarezerwuj wizytę",
     btn_ig:"Instagram @tina_gabinet_masazu",
     about_eyebrow:"O gabinecie",
@@ -317,7 +325,7 @@ const i18n = {
     hero_eyebrow:"Нєполоміце · вул. Млинська 3a",
     hero_title:"Хвилина спокою для тіла та розуму",
     hero_lead:"Кабінет масажу Tina — розслаблюючий, класичний масаж, японський Kobido та догляд за обличчям у камерній атмосфері, лише за попереднім записом.",
-    hero_rating:"5.0 на основі 11 відгуків (Booksy)",
+    hero_rating:"{{RATING_VALUE}} на основі {{RATING_COUNT}} відгуків (Booksy)",
     btn_book:"Записатися на візит",
     btn_ig:"Instagram @tina_gabinet_masazu",
     about_eyebrow:"Про кабінет",
@@ -360,6 +368,10 @@ function setLang(lang){
     if (key === 'badge_hours' || key === 'contact_info') {
       val = val.replace('{{HOURS}}', (hours && hours[lang]) || DEFAULT_HOURS[lang]);
     }
+    if (key === 'hero_rating') {
+      const r = (rating && rating.value != null) ? rating : DEFAULT_RATING;
+      val = val.replace('{{RATING_VALUE}}', r.value).replace('{{RATING_COUNT}}', r.count);
+    }
     el.innerHTML = val;
   });
   document.querySelectorAll('.lang-toggle button').forEach(btn => {
@@ -379,6 +391,7 @@ async function loadContent(){
       const data = await res.json();
       if (data && Array.isArray(data.services) && data.services.length) services = data.services;
       if (data && data.hours) hours = { pl: data.hours.pl || DEFAULT_HOURS.pl, ua: data.hours.ua || DEFAULT_HOURS.ua };
+      if (data && data.rating && data.rating.value != null && data.rating.count != null) rating = data.rating;
     }
   } catch (e) { /* keep built-in defaults, e.g. offline or opened as a local file */ }
 }
