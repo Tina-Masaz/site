@@ -3,6 +3,10 @@
     "pl": "Pon–Sob 09:00–19:00 (na umówioną wizytę)",
     "ua": "Пн–Сб 09:00–19:00 (за попереднім записом)"
   },
+  "rating": {
+    "value": "5.0",
+    "count": 12
+  },
   "services": [
     {
       "pl": "Masaż relaksacyjny",
