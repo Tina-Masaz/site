@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tina-masaz.com.pl/sitemap.xml
