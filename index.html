@@ -193,6 +193,20 @@
     width:100%; height:220px; object-fit:cover; border-radius:14px; box-shadow:var(--shadow);
     display:block;
   }
+  /* Videos */
+  .videos{background:var(--cream-2);}
+  .video-featured{max-width:340px; margin:0 auto 32px;}
+  .video-featured video{width:100%; aspect-ratio:9/16; border-radius:var(--radius); box-shadow:var(--shadow); display:block; background:#000;}
+  .video-grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px;
+  }
+  .video-card video{
+    width:100%; aspect-ratio:9/16; border-radius:14px; box-shadow:var(--shadow);
+    display:block; background:#000;
+  }
+  .video-caption{
+    text-align:center; margin-top:10px; font-size:0.9rem; color:var(--ink-soft);
+  }
   /* Contact */
   .contact{
     background:var(--sage-dark); color:var(--cream); border-radius:24px;
@@ -300,6 +314,48 @@
   </div>
 </section>
 
+<section class="videos">
+  <div class="container">
+    <div class="section-title">
+      <span class="eyebrow" data-i18n="videos_eyebrow">Zobacz nas w akcji</span>
+      <h2 data-i18n="videos_title">Filmy z zabiegów</h2>
+      <p data-i18n="videos_lead">Krótkie nagrania z gabinetu — zobacz, jak wygląda każdy z zabiegów.</p>
+    </div>
+    <div class="video-featured">
+      <video controls preload="metadata" playsinline poster="images/video-posters/poznaj-nasze-zabiegi-poster.jpg">
+        <source src="videos/poznaj-nasze-zabiegi.mp4" type="video/mp4">
+      </video>
+      <p class="video-caption" data-i18n="video_featured_caption">Poznaj nasze zabiegi</p>
+    </div>
+    <div class="video-grid">
+      <div class="video-card">
+        <video controls preload="metadata" playsinline poster="images/video-posters/masaz-bambusowymi-patyczkami-poster.jpg">
+          <source src="videos/masaz-bambusowymi-patyczkami.mp4" type="video/mp4">
+        </video>
+        <p class="video-caption" data-i18n="video_bambus_caption">Masaż bambusowymi patyczkami</p>
+      </div>
+      <div class="video-card">
+        <video controls preload="metadata" playsinline poster="images/video-posters/masaz-klasyczny-poster.jpg">
+          <source src="videos/masaz-klasyczny.mp4" type="video/mp4">
+        </video>
+        <p class="video-caption" data-i18n="video_klasyczny_caption">Masaż klasyczny</p>
+      </div>
+      <div class="video-card">
+        <video controls preload="metadata" playsinline poster="images/video-posters/masaz-glowy-poster.jpg">
+          <source src="videos/masaz-glowy.mp4" type="video/mp4">
+        </video>
+        <p class="video-caption" data-i18n="video_glowa_caption">Masaż głowy</p>
+      </div>
+      <div class="video-card">
+        <video controls preload="metadata" playsinline poster="images/video-posters/relaks-poster.jpg">
+          <source src="videos/relaks.mp4" type="video/mp4">
+        </video>
+        <p class="video-caption" data-i18n="video_relaks_caption">Relaks</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section>
   <div class="container">
     <div class="contact">
@@ -364,6 +420,14 @@ const i18n = {
     services_lead:"Ceny orientacyjne — dokładny zakres i cenę potwierdzisz przy rezerwacji w Booksy.",
     gallery_eyebrow:"Atmosfera",
     gallery_title:"Galeria",
+    videos_eyebrow:"Zobacz nas w akcji",
+    videos_title:"Filmy z zabiegów",
+    videos_lead:"Krótkie nagrania z gabinetu — zobacz, jak wygląda każdy z zabiegów.",
+    video_featured_caption:"Poznaj nasze zabiegi",
+    video_bambus_caption:"Masaż bambusowymi patyczkami",
+    video_klasyczny_caption:"Masaż klasyczny",
+    video_glowa_caption:"Masaż głowy",
+    video_relaks_caption:"Relaks",
     contact_title:"Umów się na chwilę dla siebie",
     contact_lead:"Rezerwacja online 24/7 przez Booksy — wybierz usługę, dogodny termin i gotowe.",
     contact_info:"📍 ul. Młyńska 3a, 32-005 Niepołomice &nbsp;·&nbsp; 🕘 {{HOURS}}",
@@ -386,6 +450,14 @@ const i18n = {
     services_lead:"Ціни орієнтовні — точний обсяг та вартість підтвердите під час запису в Booksy.",
     gallery_eyebrow:"Атмосфера",
     gallery_title:"Галерея",
+    videos_eyebrow:"Побачте нас у дії",
+    videos_title:"Відео із процедур",
+    videos_lead:"Короткі відео з кабінету — подивіться, як виглядає кожна процедура.",
+    video_featured_caption:"Ознайомтеся з нашими процедурами",
+    video_bambus_caption:"Масаж бамбуковими паличками",
+    video_klasyczny_caption:"Класичний масаж",
+    video_glowa_caption:"Масаж голови",
+    video_relaks_caption:"Релакс",
     contact_title:"Запишіться на хвилину для себе",
     contact_lead:"Онлайн-запис 24/7 через Booksy — оберіть послугу, зручний час і готово.",
     contact_info:"📍 вул. Млинська 3a, 32-005 Нєполоміце &nbsp;·&nbsp; 🕘 {{HOURS}}",
